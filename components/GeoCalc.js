@@ -46,11 +46,8 @@ const GeoCalc = () => {
                 style={styles.button}
                 title = {'Calculate'}
                 onPress = { () => {
-                    if (state.lat1 === "" || state.long1 === "" || state.lat2 === "" || state.long2 === ""){
-                        Alert.alert('Please enter something')
-                    }
-                    else if (isNaN(state.lat1) || isNaN(state.long1) || isNaN(state.lat2) || isNaN(state.long2)){
-                        Alert.alert('Please enter a number')
+                    if (validation() !=true){
+                        Alert.alert(validation())
                     }
                     else{
                         updateStateObject({
@@ -119,6 +116,18 @@ const GeoCalc = () => {
     function round(value, decimals) {
         return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
     }
+
+    function validation(){
+        if (state.lat1 === "") return('Please enter something for Latitude 1')
+        else if(state.long1 === "") return('Please enter something for longitude 1')
+        else if (state.lat2 === "") return('Please enter something for Latitude 2')
+        else if (state.long2 === "") return('Please enter something for longitude 2')
+        else if (isNaN(state.lat1)) return('Please enter a number for Latitude 1')
+        else if (isNaN(state.long1)) return('Please enter a number for longitude 1')
+        else if (isNaN(state.lat2)) return('Please enter a number for Latitude 2')
+        else if (isNaN(state.long2)) return('Please enter a number for longitude 2')
+        else return(true)  
+        }
 }
 
 const styles = StyleSheet.create({
