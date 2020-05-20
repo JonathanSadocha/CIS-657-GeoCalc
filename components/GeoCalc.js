@@ -18,10 +18,7 @@ const GeoCalc = () => {
             <Input 
                 style={styles.item}
                 placeholder="Enter latitude for point 1"
-                onChangeText={(val) => {
-                    updateStateObject({lat1: val})
-                }
-                } 
+                onChangeText={(val) => {updateStateObject({lat1: val})}}
                 value={state.lat1}
             />
             <Input
@@ -46,9 +43,7 @@ const GeoCalc = () => {
                 style={styles.button}
                 title = {'Calculate'}
                 onPress = { () => {
-                    if (validation() !=true){
-                        Alert.alert(validation())
-                    }
+                    if (validation() !=true) Alert.alert(validation())
                     else{
                         updateStateObject({
                             range: `Distance: ${computeDistance(state.lat1, state.long1, state.lat2, state.long2)}`,
@@ -60,9 +55,7 @@ const GeoCalc = () => {
             <Button 
                 style={styles.button}
                 title = {'Clear'}
-                onPress = { () => {
-                    updateStateObject({lat1: "", long1: "", lat2: "", long2: "", range: "", bearing: "" })
-                }}
+                onPress = { () => updateStateObject({lat1: "", long1: "", lat2: "", long2: "", range: "", bearing: "" })}
             />
             <Text>{state.range}</Text>
             <Text>{state.bearing} </Text>
@@ -140,7 +133,7 @@ const styles = StyleSheet.create({
         padding: 2,
     },
     button: {
-        marginBottom: 10,
+        marginBottom: 100,
     }
   });
 
